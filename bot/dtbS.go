@@ -23,25 +23,6 @@ func FindUser(tg_id int64) {
 
 }
 
-/*func FindService(step1 string) {
-	query := "SELECT COUNT(*) FROM services WHERE name = ?"
-	var count int
-	err := db.QueryRow(query, step1).Scan(&count)
-	if err != nil {
-		log.Fatal(err)
-	}
-
-	log.Print("$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$", count)
-
-	if count == 0 {
-		insertQuery := "INSERT INTO services (name) VALUES (?)"
-		_, err = db.Exec(insertQuery, step1)
-		if err != nil {
-			log.Fatal(err)
-		}
-	}
-}*/
-
 func SetRequest(step1 string, step2 string, step3 string, tg_id int64) error {
 
 	var userId int
