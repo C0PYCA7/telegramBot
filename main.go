@@ -5,6 +5,6 @@ import (
 )
 
 func main() {
-	bot.StarBot()
 	bot.StartDb()
+	bot.StarBot()
 }

@@ -29,14 +29,14 @@ func SetRequest(servName string, uLogin string, uPass string, tg_id int64) error
 	var userId int
 
 	uId := "SELECT id FROM users WHERE tg_id = ?"
-	err = db.QueryRow(uId, tg_id).Scan(&userId)
+	err := db.QueryRow(uId, tg_id).Scan(&userId)
 	if err != nil {
 		log.Fatal(err)
 	}
 
 	sQuery := "SELECT COUNT(*) FROM services WHERE name = ?"
 	var count int
-	err := db.QueryRow(sQuery, servName).Scan(&count)
+	err = db.QueryRow(sQuery, servName).Scan(&count)
 	if err != nil {
 		log.Fatal(err)
 	}
@@ -116,7 +116,7 @@ func DelRequest(servName string, tg_id int64) {
 		"JOIN services ON user_info.service_id = services.id " +
 		"WHERE users.tg_id = ? AND services.name = ?"
 
-	_, err = db.Exec(query, tg_id, servName)
+	_, err := db.Exec(query, tg_id, servName)
 	if err != nil {
 		log.Fatal(err)
 	}

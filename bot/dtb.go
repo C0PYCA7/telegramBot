@@ -6,19 +6,31 @@ import (
 	"log"
 )
 
-var db, err = sql.Open("mysql", "Alvarez:89173036695Druno@tcp(127.0.0.1:3306)/logPassManager")
+var db *sql.DB
 
 func StartDb() {
-	db, err := sql.Open("mysql", "Alvarez:89173036695Druno@tcp(127.0.0.1:3306)/logPassManager")
+	var err error
+	db, err = sql.Open("mysql", "root:root@tcp(db:3306)/")
 
 	err = db.Ping()
 	if err != nil {
-		log.Fatal(err)
+		log.Print("Wait a second")
 	}
 
 	_, err = db.Exec("CREATE DATABASE IF NOT EXISTS logpassmanager")
 	if err != nil {
-		log.Fatal(err)
+		log.Print("Wait a second")
+	}
+
+	db, err = sql.Open("mysql", "root:root@tcp(db:3306)/logpassmanager")
+	err = db.Ping()
+	if err != nil {
+		log.Print("Wait a second")
+	}
+
+	_, err = db.Exec("USE logpassmanager")
+	if err != nil {
+		log.Print("Wait a second")
 	}
 
 	_, err = db.Exec("CREATE TABLE IF NOT EXISTS users " +
