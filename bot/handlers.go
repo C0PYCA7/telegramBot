@@ -1,8 +1,10 @@
 package bot
 
 import (
+	"fmt"
 	_ "github.com/go-sql-driver/mysql"
 	tgbotapi "github.com/go-telegram-bot-api/telegram-bot-api"
+	"time"
 )
 
 func StartHandler(update tgbotapi.Update) {
@@ -38,4 +40,18 @@ func GetHandler(update tgbotapi.Update) {
 func DelHandler(update tgbotapi.Update) {
 	msg := tgbotapi.NewMessage(update.Message.Chat.ID, "Введите название сервиса: ")
 	bot.Send(msg)
+}
+
+func DeletePasswordAfterDelay(bot *tgbotapi.BotAPI, chatID int64, messageID int, delay time.Duration) {
+	time.Sleep(delay)
+
+	deleteMsg := tgbotapi.DeleteMessageConfig{
+		ChatID:    chatID,
+		MessageID: messageID,
+	}
+
+	_, err := bot.DeleteMessage(deleteMsg)
+	if err != nil {
+		fmt.Println("Ошибка удаления сообщения:", err)
+	}
 }
