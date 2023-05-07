@@ -1,13 +1,13 @@
 # Telegram bot - хранилище данных от разных сервисов
 
-_LogPassManager_ - бот, который предоставляет пользователям
+LogPassManager - бот, который предоставляет пользователям
 свое пространство. Никто не увидит ваши данные от сервисов
 
 При реализации использовались пакеты:
-* _github.com/go-telegram-bot-api/telegram-bot-api_
-* _database/sql_
-* _log_
-* _time_
+* github.com/go-telegram-bot-api/telegram-bot-api
+* database/sql
+* log
+* time
 
 ## Возможности бота
 * Создание новых записей в базе данных с названием сервиса, логина и пароля
