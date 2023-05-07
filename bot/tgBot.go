@@ -23,7 +23,6 @@ type User struct {
 }
 
 func StarBot() {
-
 	servName, uLogin, uPass := "", "", ""
 	_, err := tgbotapi.NewBotAPI("6219475155:AAGeqtKH--UY4suqHR9UtyTe8M7eufzS4Aw")
 
@@ -44,7 +43,7 @@ func StarBot() {
 	}
 
 	for update := range updates {
-		if update.Message == nil { // игнорировать любые обновления, которые не являются сообщениями
+		if update.Message == nil {
 			continue
 		}
 
