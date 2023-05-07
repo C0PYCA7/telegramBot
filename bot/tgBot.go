@@ -101,6 +101,9 @@ func StarBot() {
 			}
 			user.Session.UPass = uPass
 			SetRequest(user.Session.ServName, user.Session.ULogin, user.Session.UPass, tgID)
+			msg := tgbotapi.NewMessage(update.Message.Chat.ID, "Данные добавлены")
+			bot.Send(msg)
+
 			delay := 1 * time.Minute
 			go DeletePasswordAfterDelay(bot, tgID, user.PasswordMsgId, delay)
 
@@ -127,6 +130,8 @@ func StarBot() {
 				servName = update.Message.Text
 			}
 			DelRequest(servName, tgID)
+			msg := tgbotapi.NewMessage(update.Message.Chat.ID, "Данные удалены")
+			bot.Send(msg)
 		}
 	}
 }
